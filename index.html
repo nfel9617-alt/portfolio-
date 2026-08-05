@@ -3,212 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noufel | Portfolio</title>
+    <title>Noufel | Professional Portfolio</title>
     <!-- استدعاء Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- استدعاء خطوط Google -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
     <!-- استدعاء أيقونات FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- استدعاء مكتبة الحركات AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Cairo', 'Poppins', sans-serif;
             background-color: #fafafa;
+            overflow-x: hidden;
         }
         
-        /* تأثير النص المفرغ (Outline) للكلمة الثانية */
+        /* تأثير النص المفرغ */
         .text-outline {
             color: transparent;
             -webkit-text-stroke: 2px #111;
         }
 
-        /* تنسيق قسم البطل وتداخل الصورة مع النص */
-        .hero-container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 80vh;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero-title-top {
+        /* تنسيق العناوين الكبيرة */
+        .hero-title {
             font-family: 'Poppins', sans-serif;
-            font-size: clamp(4rem, 15vw, 12rem);
+            font-size: clamp(4rem, 14vw, 11rem);
             font-weight: 900;
-            line-height: 0.8;
-            color: #111;
-            z-index: 1;
+            line-height: 0.85;
             letter-spacing: -2px;
+            text-transform: uppercase;
         }
 
-        .hero-title-bottom {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(4rem, 15vw, 12rem);
-            font-weight: 900;
-            line-height: 0.8;
-            z-index: 3; /* فوق الصورة */
-            letter-spacing: -2px;
-        }
-
-        /* الصورة وتأثير الخلفية (Blob) */
-        .hero-image-wrapper {
+        /* الشكل الهندسي المائل خلف الصورة */
+        .diagonal-shape {
             position: absolute;
-            top: 45%;
+            top: 10%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2; /* بين الكلمتين */
-            width: 300px;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-        }
-
-        /* الشكل الجمالي خلف صورتك الشفافة */
-        .hero-blob {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            transform: translateX(-50%) skewY(-8deg) rotate(4deg);
+            width: 280px;
+            height: 90%;
+            background: linear-gradient(135deg, #111 0%, #333 100%);
+            border-radius: 24px;
             z-index: -1;
-            animation: morph 8s ease-in-out infinite;
-            bottom: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
-        @keyframes morph {
-            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-            34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
-            67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
-        }
-
-        .hero-img {
-            max-width: 100%;
-            height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+        /* تخصيص بطاقات المشاريع */
+        .project-card:hover .project-link {
+            padding-right: 10px;
+            color: #3b82f6;
+            border-color: #3b82f6;
         }
     </style>
 </head>
 <body class="text-gray-800 antialiased selection:bg-black selection:text-white">
 
     <!-- شريط التنقل -->
-    <nav class="flex justify-between items-center p-6 md:px-12">
+    <nav class="flex justify-between items-center p-6 md:px-12" data-aos="fade-down" data-aos-duration="1000">
         <div class="font-['Poppins'] font-bold text-2xl tracking-tighter">noufel.</div>
-        <div class="hidden md:flex gap-6 text-sm font-semibold lowercase">
+        <div class="hidden md:flex gap-8 text-sm font-semibold lowercase">
             <a href="#about" class="hover:text-gray-500 transition">About</a>
             <a href="#projects" class="hover:text-gray-500 transition">Projects</a>
             <a href="#contact" class="hover:text-gray-500 transition">Contact</a>
         </div>
     </nav>
 
-    <!-- قسم البطل (Hero Section) -->
-    <section class="hero-container mt-10 md:mt-0">
-        <!-- الكلمة العلوية -->
-        <h1 class="hero-title-top uppercase">Noufel</h1>
+    <!-- قسم البطل (Hero Section) المحدث -->
+    <section class="mt-8 md:mt-4 flex flex-col items-center">
         
-        <!-- صورتك والخلفية -->
-        <div class="hero-image-wrapper">
-            <!-- شكل الخلفية -->
-            <div class="hero-blob"></div>
-            <!-- ضع رابط صورتك من قيت هاب هنا -->
-       <img src="https://raw.githubusercontent.com/nfel9617-alt/portfolio-/main/noufel.png" alt="Noufel" class="hero-img">
+        <!-- حاوية الصورة والكلمات (محمية من التداخل مع النص السفلي) -->
+        <div class="relative w-full flex flex-col items-center justify-center min-h-[450px] md:min-h-[550px] mb-8">
+            
+            <!-- الكلمة العلوية -->
+            <h1 class="hero-title text-black absolute top-0 z-0" data-aos="zoom-in" data-aos-duration="1200">NOUFEL</h1>
+            
+            <!-- الصورة والخلفية المائلة -->
+            <div class="relative z-10 mt-16 md:mt-24" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+                <!-- الخط المائل الاحترافي بالأسود -->
+                <div class="diagonal-shape"></div>
+                <!-- صورتك -->
+                <img src="https://raw.githubusercontent.com/nfel9617-alt/portfolio-/main/noufel.png" alt="Noufel Portrait" class="h-[350px] md:h-[450px] object-contain drop-shadow-2xl relative z-10 bottom-0 pointer-events-none">
+            </div>
+
+            <!-- الكلمة السفلية -->
+            <h1 class="hero-title text-outline absolute bottom-[-20px] md:bottom-0 z-20 pointer-events-none" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="100">PORTFOLIO</h1>
         </div>
 
-        <!-- الكلمة السفلية (مفرغة) -->
-        <h1 class="hero-title-bottom text-outline uppercase">Portfolio</h1>
+        <!-- الوصف السريع والأزرار (في تدفق طبيعي لن يتداخل مع الصورة أبداً) -->
+        <div class="relative z-30 flex flex-col items-center px-4 w-full max-w-3xl">
+            <p class="text-center text-lg font-medium text-gray-600 leading-relaxed mb-8" dir="rtl" data-aos="fade-up" data-aos-delay="400">
+                أنا نوفل، طالب بالمدرسة العليا للإعلام الآلي (ESI). أعمل كمطور ويب، صانع محتوى تعليمي، ومؤسس بودكاست ونادي "طموح". أجمع بين البرمجة وإدارة المجتمعات الرقمية.
+            </p>
+            
+            <div class="flex gap-4" data-aos="fade-up" data-aos-delay="500">
+                <a href="#projects" class="bg-black text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition shadow-lg hover:shadow-xl">تصفح أعمالي</a>
+                <a href="#contact" class="border-2 border-black text-black px-8 py-3 rounded-full font-semibold hover:bg-black hover:text-white transition bg-white">تواصل معي</a>
+            </div>
+        </div>
+    </section>
 
-        <!-- الوصف السريع -->
-        <p class="mt-48 md:mt-40 max-w-2xl text-center px-4 text-lg font-medium text-gray-600 z-10" dir="rtl">
-            👋 أهلاً، أنا نوفل. طالب بالمدرسة العليا للإعلام الآلي (ESI)، مطور ويب، صانع محتوى تعليمي، ومؤسس بودكاست ونادي "طموح".
-        </p>
-        
-        <div class="mt-6 flex gap-4 z-10">
-            <a href="#projects" class="bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition">تصفح أعمالي</a>
-            <a href="#contact" class="border-2 border-black text-black px-6 py-3 rounded-full font-semibold hover:bg-black hover:text-white transition">تواصل معي</a>
+    <!-- إحصائيات سريعة -->
+    <section class="py-16 mt-8 bg-white" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto text-center border-t border-b border-gray-100 py-10">
+            <h3 class="text-6xl font-black font-['Poppins'] text-black mb-2">+4</h3>
+            <p class="text-gray-500 font-bold text-lg">مشاريع ومنصات رقمية تم إنجازها</p>
         </div>
     </section>
 
     <!-- قسم المهارات -->
-    <section id="about" class="py-20 px-6 md:px-12 bg-white flex flex-col items-center text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-8 font-['Poppins']">Who am i?</h2>
-        <div class="flex flex-wrap justify-center gap-3 max-w-4xl">
-            <!-- أزرار المهارات -->
-            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">HTML / CSS / JS</span>
-            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">Figma UI/UX</span>
-            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">AI Tools</span>
-            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">صانع محتوى تعليمي</span>
-            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">تقديم البودكاست</span>
-            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">إعلانات وتسويق</span>
-            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">إدارة المجتمعات (نادي طموح)</span>
+    <section id="about" class="py-16 px-6 md:px-12 bg-white flex flex-col items-center text-center">
+        <h2 class="text-sm tracking-widest uppercase text-gray-400 font-bold mb-4 font-['Poppins']" data-aos="fade-up">Expertise</h2>
+        <h3 class="text-3xl md:text-4xl font-bold mb-10 font-['Poppins']" data-aos="fade-up" data-aos-delay="100">Who am i?</h3>
+        
+        <div class="flex flex-wrap justify-center gap-3 max-w-4xl" data-aos="fade-up" data-aos-delay="200">
+            <span class="px-6 py-3 border border-gray-200 rounded-full font-semibold text-gray-800 hover:border-black transition cursor-default">HTML / CSS / JS</span>
+            <span class="px-6 py-3 border border-gray-200 rounded-full font-semibold text-gray-800 hover:border-black transition cursor-default">Figma UI/UX</span>
+            <span class="px-6 py-3 border border-gray-200 rounded-full font-semibold text-gray-800 hover:border-black transition cursor-default">AI Tools</span>
+            <span class="px-6 py-3 border border-gray-200 rounded-full font-semibold text-gray-800 hover:border-black transition cursor-default">صناعة محتوى تعليمي</span>
+            <span class="px-6 py-3 border border-gray-200 rounded-full font-semibold text-gray-800 hover:border-black transition cursor-default">تقديم بودكاست</span>
+            <span class="px-6 py-3 border border-gray-200 rounded-full font-semibold text-gray-800 hover:border-black transition cursor-default">إدارة المجتمعات</span>
         </div>
     </section>
 
     <!-- قسم المشاريع -->
-    <section id="projects" class="py-20 px-6 md:px-12 bg-gray-50">
+    <section id="projects" class="py-24 px-6 md:px-12 bg-gray-50">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center font-['Poppins']">Featured Projects</h2>
+            <h2 class="text-sm tracking-widest uppercase text-gray-400 font-bold mb-2 font-['Poppins'] text-center" data-aos="fade-up">Portfolio</h2>
+            <h3 class="text-3xl md:text-4xl font-bold mb-16 text-center font-['Poppins']" data-aos="fade-up" data-aos-delay="100">Featured Projects</h3>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8" dir="rtl">
                 
-                <!-- المشروع الأول: منصة نوفل -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
-                    <div class="h-48 bg-gray-100 rounded-xl mb-4 flex items-center justify-center overflow-hidden relative">
-                        <!-- ضع رابط صورة/لوجو المنصة هنا -->
-                        <span class="text-gray-400 text-sm absolute top-2 right-2">صورة المنصة</span>
-                        <img src="رابط_صورة_منصة_نوفل_هنا" class="w-full h-full object-cover" alt="منصة نوفل">
+                <!-- المشروع الأول -->
+                <div class="project-card bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center p-2 shrink-0">
+                            <img src="رابط_لوقو_منصة_نوفل_هنا.png" alt="لوجو منصة نوفل" class="max-w-full max-h-full object-contain text-xs text-gray-400">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">منصة نوفل</h3>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">منصة نوفل</h3>
-                    <p class="text-gray-600 mb-6 flex-grow">
+                    <p class="text-gray-600 mb-8 flex-grow leading-relaxed">
                         منصة تعليمية موجهة لطلبة البكالوريا. تحتوي على نظام دراسة متكامل، دروس مشروحة بطريقة مميزة، بالإضافة إلى أدعية وحاسبة خاصة للمعدل.
                     </p>
-                    <a href="رابط_المنصة_هنا" target="_blank" class="text-center bg-black text-white py-2 rounded-lg font-semibold hover:bg-gray-800 transition">اكتشف المنصة</a>
+                    <a href="https://nfendi-sudo.github.io/Platform-noufel-bac/" target="_blank" class="project-link w-max border-b-2 border-black pb-1 font-bold text-black transition-all">اكتشف المنصة &larr;</a>
                 </div>
 
-                <!-- المشروع الثاني: منصة redx school -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
-                    <div class="h-48 bg-gray-100 rounded-xl mb-4 flex items-center justify-center overflow-hidden relative">
-                        <!-- ضع رابط صورة/لوجو المنصة هنا -->
-                        <span class="text-gray-400 text-sm absolute top-2 right-2">صورة المنصة</span>
-                        <img src="رابط_صورة_ريدكس_هنا" class="w-full h-full object-cover" alt="Redx School">
+                <!-- المشروع الثاني -->
+                <div class="project-card bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center p-2 shrink-0">
+                            <img src="رابط_لوقو_ريدكس_هنا.png" alt="لوجو Redx School" class="max-w-full max-h-full object-contain text-xs text-gray-400">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">منصة Redx School</h3>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">منصة Redx School</h3>
-                    <p class="text-gray-600 mb-6 flex-grow">
-                        منصة متخصصة في تسيير دروس الدعم لمؤسسة تعليمية تغطي جميع الأطوار الدراسية، لتسهيل إدارة الجداول والطلاب.
+                    <p class="text-gray-600 mb-8 flex-grow leading-relaxed">
+                        منصة متخصصة في تسيير دروس الدعم لمؤسسة تعليمية تغطي جميع الأطوار الدراسية، لتسهيل إدارة الجداول والطلاب بدقة واحترافية.
                     </p>
-                    <a href="رابط_المنصة_أو_جيت_هاب_هنا" target="_blank" class="text-center border-2 border-black text-black py-2 rounded-lg font-semibold hover:bg-black hover:text-white transition">عرض المشروع</a>
+                    <a href="https://nfel9617-alt.github.io/Redx-School-/" target="_blank" class="project-link w-max border-b-2 border-black pb-1 font-bold text-black transition-all">عرض المشروع &larr;</a>
                 </div>
 
-                <!-- المشروع الثالث: منصة نادي طموح -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
-                    <div class="h-48 bg-gray-100 rounded-xl mb-4 flex items-center justify-center overflow-hidden relative">
-                        <!-- ضع رابط صورة/لوجو المنصة هنا -->
-                        <span class="text-gray-400 text-sm absolute top-2 right-2">صورة المنصة</span>
-                        <img src="رابط_صورة_نادي_طموح_هنا" class="w-full h-full object-cover" alt="نادي طموح">
+                <!-- المشروع الثالث -->
+                <div class="project-card bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center p-2 shrink-0">
+                            <img src="رابط_لوقو_نادي_طموح_هنا.png" alt="لوجو نادي طموح" class="max-w-full max-h-full object-contain text-xs text-gray-400">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">منصة نادي طموح</h3>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">منصة نادي طموح</h3>
-                    <p class="text-gray-600 mb-6 flex-grow">
-                        المنصة الرسمية لنادي طموح. تجمع كافة أعمال النادي من أنشطة، فعاليات، ومعلومات تهم الأعضاء والمتابعين.
+                    <p class="text-gray-600 mb-8 flex-grow leading-relaxed">
+                        المنصة الرسمية لنادي طموح. تجمع كافة أعمال النادي من أنشطة، فعاليات، ومعلومات تهم الأعضاء والمتابعين في مكان واحد منظم.
                     </p>
-                    <a href="رابط_المنصة_أو_جيت_هاب_هنا" target="_blank" class="text-center border-2 border-black text-black py-2 rounded-lg font-semibold hover:bg-black hover:text-white transition">عرض المشروع</a>
+                    <a href="https://nfel9617-alt.github.io/Tomouh.club/" target="_blank" class="project-link w-max border-b-2 border-black pb-1 font-bold text-black transition-all">عرض المشروع &larr;</a>
                 </div>
 
-                <!-- المشروع الرابع: منصة فقاعات لينا -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
-                    <div class="h-48 bg-gray-100 rounded-xl mb-4 flex items-center justify-center overflow-hidden relative">
-                        <!-- ضع رابط صورة/لوجو المنصة هنا -->
-                        <span class="text-gray-400 text-sm absolute top-2 right-2">صورة المنصة</span>
-                        <img src="رابط_صورة_فقاعات_لينا_هنا" class="w-full h-full object-cover" alt="فقاعات لينا">
+                <!-- المشروع الرابع -->
+                <div class="project-card bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center p-2 shrink-0">
+                            <img src="رابط_لوقو_فقاعات_لينا_هنا.png" alt="لوجو فقاعات لينا" class="max-w-full max-h-full object-contain text-xs text-gray-400">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">منصة فقاعات لينا</h3>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">منصة فقاعات لينا</h3>
-                    <p class="text-gray-600 mb-6 flex-grow">
-                        منصة تجارية عصرية لبيع الأسماء (الفايتر) بطريقة مميزة، حديثة، وسهلة الاستخدام للعملاء.
+                    <p class="text-gray-600 mb-8 flex-grow leading-relaxed">
+                        منصة تجارية عصرية لبيع الأسماء (الفايتر) بطريقة مميزة، حديثة، وتوفر تجربة مستخدم سلسة وسهلة للعملاء.
                     </p>
-                    <a href="رابط_المنصة_أو_جيت_هاب_هنا" target="_blank" class="text-center border-2 border-black text-black py-2 rounded-lg font-semibold hover:bg-black hover:text-white transition">عرض المشروع</a>
+                    <a href="https://nfel9617-alt.github.io/foq/" target="_blank" class="project-link w-max border-b-2 border-black pb-1 font-bold text-black transition-all">عرض المشروع &larr;</a>
                 </div>
 
             </div>
@@ -216,35 +197,37 @@
     </section>
 
     <!-- قسم التواصل -->
-    <section id="contact" class="py-20 px-6 md:px-12 bg-black text-white text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 font-['Poppins']">Let's Work Together</h2>
-        <p class="mb-10 text-gray-400 max-w-xl mx-auto" dir="rtl">
-            سواء كنت تريد التعاون في مشروع، أو لديك استفسار حول منصاتي التعليمية، أو تبحث عن مقدم لبرنامجك، لا تتردد في التواصل معي!
+    <section id="contact" class="py-24 px-6 md:px-12 bg-black text-white text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6 font-['Poppins']" data-aos="fade-up">Let's Work Together</h2>
+        <p class="mb-12 text-gray-400 max-w-xl mx-auto leading-relaxed" dir="rtl" data-aos="fade-up" data-aos-delay="100">
+            سواء كنت تريد التعاون في مشروع، أو لديك استفسار حول منصاتي التعليمية، أو تبحث عن مطور لبرمجياتك، لا تتردد في التواصل معي.
         </p>
         
-        <div class="flex flex-wrap justify-center gap-6 mb-12">
-            <!-- الإيميل -->
-            <a href="mailto:nfel9617@gmail.com" class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-full transition">
+        <div class="flex flex-wrap justify-center gap-6 mb-16" data-aos="fade-up" data-aos-delay="200">
+            <a href="mailto:nfel9617@gmail.com" class="flex items-center gap-3 bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full transition font-semibold">
                 <i class="fa-solid fa-envelope"></i> nfel9617@gmail.com
             </a>
-            <!-- الهاتف / واتساب -->
-            <a href="https://wa.me/213549458915" target="_blank" class="flex items-center gap-2 bg-green-600 hover:bg-green-500 px-6 py-3 rounded-full transition text-white">
+            <a href="https://wa.me/213549458915" target="_blank" class="flex items-center gap-3 bg-white text-black hover:bg-gray-200 px-8 py-4 rounded-full transition font-bold">
                 <i class="fa-brands fa-whatsapp text-xl"></i> 0549 45 89 15
             </a>
         </div>
 
-        <!-- روابط السوشيال ميديا -->
-        <div class="flex justify-center gap-6 text-2xl text-gray-400">
-            <!-- ضع رابط انستغرام هنا -->
-            <a href="رابط_انستغرام_هنا" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
-            <!-- ضع رابط فيسبوك هنا -->
-            <a href="رابط_فيسبوك_هنا" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
-            <!-- ضع رابط جيت هاب هنا -->
-            <a href="رابط_جيت_هاب_هنا" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+        <div class="flex justify-center gap-8 text-2xl text-gray-500" data-aos="fade-up" data-aos-delay="300">
+            <a href="#" target="_blank" class="hover:text-white transition transform hover:scale-110"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" target="_blank" class="hover:text-white transition transform hover:scale-110"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" target="_blank" class="hover:text-white transition transform hover:scale-110"><i class="fa-brands fa-github"></i></a>
         </div>
         
-        <p class="mt-16 text-sm text-gray-600 font-['Poppins']">&copy; 2026 Noufel. All rights reserved.</p>
+        <p class="mt-20 text-sm text-gray-600 font-['Poppins'] tracking-wider">&copy; 2026 Noufel. All rights reserved.</p>
     </section>
 
+    <!-- تفعيل مكتبة AOS للحركات -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 50,
+        });
+    </script>
 </body>
 </html>
