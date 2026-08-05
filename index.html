@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noufel | Portfolio</title>
+    <!-- استدعاء Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- استدعاء خطوط Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- استدعاء أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            background-color: #fafafa;
+        }
+        
+        /* تأثير النص المفرغ (Outline) للكلمة الثانية */
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 2px #111;
+        }
+
+        /* تنسيق قسم البطل وتداخل الصورة مع النص */
+        .hero-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-title-top {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            line-height: 0.8;
+            color: #111;
+            z-index: 1;
+            letter-spacing: -2px;
+        }
+
+        .hero-title-bottom {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            line-height: 0.8;
+            z-index: 3; /* فوق الصورة */
+            letter-spacing: -2px;
+        }
+
+        /* الصورة وتأثير الخلفية (Blob) */
+        .hero-image-wrapper {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2; /* بين الكلمتين */
+            width: 300px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        /* الشكل الجمالي خلف صورتك الشفافة */
+        .hero-blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            z-index: -1;
+            animation: morph 8s ease-in-out infinite;
+            bottom: 20px;
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+            67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+        }
+
+        .hero-img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased selection:bg-black selection:text-white">
+
+    <!-- شريط التنقل -->
+    <nav class="flex justify-between items-center p-6 md:px-12">
+        <div class="font-['Poppins'] font-bold text-2xl tracking-tighter">noufel.</div>
+        <div class="hidden md:flex gap-6 text-sm font-semibold lowercase">
+            <a href="#about" class="hover:text-gray-500 transition">About</a>
+            <a href="#projects" class="hover:text-gray-500 transition">Projects</a>
+            <a href="#contact" class="hover:text-gray-500 transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- قسم البطل (Hero Section) -->
+    <section class="hero-container mt-10 md:mt-0">
+        <!-- الكلمة العلوية -->
+        <h1 class="hero-title-top uppercase">Noufel</h1>
+        
+        <!-- صورتك والخلفية -->
+        <div class="hero-image-wrapper">
+            <!-- شكل الخلفية -->
+            <div class="hero-blob"></div>
+            <!-- ضع رابط صورتك من قيت هاب هنا -->
+            <img src="ضع_رابط_صورتك_بدون_خلفية_هنا.png" alt="Noufel" class="hero-img">
+        </div>
+
+        <!-- الكلمة السفلية (مفرغة) -->
+        <h1 class="hero-title-bottom text-outline uppercase">Portfolio</h1>
+
+        <!-- الوصف السريع -->
+        <p class="mt-48 md:mt-40 max-w-2xl text-center px-4 text-lg font-medium text-gray-600 z-10" dir="rtl">
+            👋 أهلاً، أنا نوفل. طالب بالمدرسة العليا للإعلام الآلي (ESI)، مطور ويب، صانع محتوى تعليمي، ومؤسس بودكاست ونادي "طموح".
+        </p>
+        
+        <div class="mt-6 flex gap-4 z-10">
+            <a href="#projects" class="bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition">تصفح أعمالي</a>
+            <a href="#contact" class="border-2 border-black text-black px-6 py-3 rounded-full font-semibold hover:bg-black hover:text-white transition">تواصل معي</a>
+        </div>
+    </section>
+
+    <!-- قسم المهارات -->
+    <section id="about" class="py-20 px-6 md:px-12 bg-white flex flex-col items-center text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 font-['Poppins']">Who am i?</h2>
+        <div class="flex flex-wrap justify-center gap-3 max-w-4xl">
+            <!-- أزرار المهارات -->
+            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">HTML / CSS / JS</span>
+            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">Figma UI/UX</span>
+            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">AI Tools</span>
+            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">صانع محتوى تعليمي</span>
+            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">تقديم البودكاست</span>
+            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">إعلانات وتسويق</span>
+            <span class="px-5 py-2 border border-gray-200 shadow-sm rounded-full font-semibold text-gray-700 bg-gray-50">إدارة المجتمعات (نادي طموح)</span>
+        </div>
+    </section>
+
+    <!-- قسم المشاريع -->
+    <section id="projects" class="py-20 px-6 md:px-12 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center font-['Poppins']">Featured Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" dir="rtl">
+                
+                <!-- المشروع الأول: منصة نوفل -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+                    <div class="h-48 bg-gray-100 rounded-xl mb-4 flex items-center justify-center overflow-hidden relative">
+                        <!-- ضع رابط صورة/لوجو المنصة هنا -->
+                        <span class="text-gray-400 text-sm absolute top-2 right-2">صورة المنصة</span>
+                        <img src="رابط_صورة_منصة_نوفل_هنا" class="w-full h-full object-cover" alt="منصة نوفل">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">منصة نوفل</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">
+                        منصة تعليمية موجهة لطلبة البكالوريا. تحتوي على نظام دراسة متكامل، دروس مشروحة بطريقة مميزة، بالإضافة إلى أدعية وحاسبة خاصة للمعدل.
+                    </p>
+                    <a href="رابط_المنصة_هنا" target="_blank" class="text-center bg-black text-white py-2 rounded-lg font-semibold hover:bg-gray-800 transition">اكتشف المنصة</a>
+                </div>
+
+                <!-- المشروع الثاني: منصة redx school -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+                    <div class="h-48 bg-gray-100 rounded-xl mb-4 flex items-center justify-center overflow-hidden relative">
+                        <!-- ضع رابط صورة/لوجو المنصة هنا -->
+                        <span class="text-gray-400 text-sm absolute top-2 right-2">صورة المنصة</span>
+                        <img src="رابط_صورة_ريدكس_هنا" class="w-full h-full object-cover" alt="Redx School">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">منصة Redx School</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">
+                        منصة متخصصة في تسيير دروس الدعم لمؤسسة تعليمية تغطي جميع الأطوار الدراسية، لتسهيل إدارة الجداول والطلاب.
+                    </p>
+                    <a href="رابط_المنصة_أو_جيت_هاب_هنا" target="_blank" class="text-center border-2 border-black text-black py-2 rounded-lg font-semibold hover:bg-black hover:text-white transition">عرض المشروع</a>
+                </div>
+
+                <!-- المشروع الثالث: منصة نادي طموح -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+                    <div class="h-48 bg-gray-100 rounded-xl mb-4 flex items-center justify-center overflow-hidden relative">
+                        <!-- ضع رابط صورة/لوجو المنصة هنا -->
+                        <span class="text-gray-400 text-sm absolute top-2 right-2">صورة المنصة</span>
+                        <img src="رابط_صورة_نادي_طموح_هنا" class="w-full h-full object-cover" alt="نادي طموح">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">منصة نادي طموح</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">
+                        المنصة الرسمية لنادي طموح. تجمع كافة أعمال النادي من أنشطة، فعاليات، ومعلومات تهم الأعضاء والمتابعين.
+                    </p>
+                    <a href="رابط_المنصة_أو_جيت_هاب_هنا" target="_blank" class="text-center border-2 border-black text-black py-2 rounded-lg font-semibold hover:bg-black hover:text-white transition">عرض المشروع</a>
+                </div>
+
+                <!-- المشروع الرابع: منصة فقاعات لينا -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col">
+                    <div class="h-48 bg-gray-100 rounded-xl mb-4 flex items-center justify-center overflow-hidden relative">
+                        <!-- ضع رابط صورة/لوجو المنصة هنا -->
+                        <span class="text-gray-400 text-sm absolute top-2 right-2">صورة المنصة</span>
+                        <img src="رابط_صورة_فقاعات_لينا_هنا" class="w-full h-full object-cover" alt="فقاعات لينا">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">منصة فقاعات لينا</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">
+                        منصة تجارية عصرية لبيع الأسماء (الفايتر) بطريقة مميزة، حديثة، وسهلة الاستخدام للعملاء.
+                    </p>
+                    <a href="رابط_المنصة_أو_جيت_هاب_هنا" target="_blank" class="text-center border-2 border-black text-black py-2 rounded-lg font-semibold hover:bg-black hover:text-white transition">عرض المشروع</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التواصل -->
+    <section id="contact" class="py-20 px-6 md:px-12 bg-black text-white text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 font-['Poppins']">Let's Work Together</h2>
+        <p class="mb-10 text-gray-400 max-w-xl mx-auto" dir="rtl">
+            سواء كنت تريد التعاون في مشروع، أو لديك استفسار حول منصاتي التعليمية، أو تبحث عن مقدم لبرنامجك، لا تتردد في التواصل معي!
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-6 mb-12">
+            <!-- الإيميل -->
+            <a href="mailto:nfel9617@gmail.com" class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-full transition">
+                <i class="fa-solid fa-envelope"></i> nfel9617@gmail.com
+            </a>
+            <!-- الهاتف / واتساب -->
+            <a href="https://wa.me/213549458915" target="_blank" class="flex items-center gap-2 bg-green-600 hover:bg-green-500 px-6 py-3 rounded-full transition text-white">
+                <i class="fa-brands fa-whatsapp text-xl"></i> 0549 45 89 15
+            </a>
+        </div>
+
+        <!-- روابط السوشيال ميديا -->
+        <div class="flex justify-center gap-6 text-2xl text-gray-400">
+            <!-- ضع رابط انستغرام هنا -->
+            <a href="رابط_انستغرام_هنا" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+            <!-- ضع رابط فيسبوك هنا -->
+            <a href="رابط_فيسبوك_هنا" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+            <!-- ضع رابط جيت هاب هنا -->
+            <a href="رابط_جيت_هاب_هنا" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+        </div>
+        
+        <p class="mt-16 text-sm text-gray-600 font-['Poppins']">&copy; 2026 Noufel. All rights reserved.</p>
+    </section>
+
+</body>
+</html>
